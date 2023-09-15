@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { readFileSync, existsSync } from "fs";
+import { readFileSync } from "fs";
 import { parse } from "yaml";
 import { fileURLToPath } from "url";
 import figlet from "figlet";
@@ -31,18 +31,28 @@ let config = {};
 try {
   const configFile = readFileSync(configFilePath, "utf8");
   config = parse(configFile);
-  if (figlet)
-    console.info(
-      colors.fgCyan,
-      figlet.textSync("Metadata Analyzer!", {
+  if (figlet) {
+    const data = readFileSync(path.join("./assets/fonts", "Slant.flf"), "utf8");
+    figlet.parseFont("slant", data);
+    figlet.text(
+      "Metadata Analyzer!",
+      {
         font: "slant",
         horizontalLayout: "universal smushing",
         verticalLayout: "controlled smushing",
-        width: 80,
+        width: 90,
         whitespaceBreak: true,
-      }),
-      colors.reset
+      },
+      function (err, text) {
+        if (err) {
+          console.log("something went wrong...");
+          console.dir(err);
+          return;
+        }
+        console.info(text);
+      }
     );
+  }
   console.info(
     colors.fgGreen + "Allowed file extensions:",
     colors.reset,
