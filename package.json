@@ -7,7 +7,6 @@
   "module": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "stop": "pkill -f \"index.js\"",
     "generate-keys": "node src/utilities/generateKeys.js"
   },
   "dependencies": {
