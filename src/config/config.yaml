@@ -1,0 +1,10 @@
+allowedFileExtensions:
+  - .jpg
+  - .png
+  - .pdf
+allowedMimeTypes:
+  - image/jpeg
+  - image/png
+  - application/pdf
+uploadDirectory: ./uploads
+port: 3000
