@@ -15,9 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
+      max-parallel: 2
       matrix:
         node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        experimental: [false]
 
     steps:
     - uses: actions/checkout@v3
@@ -29,4 +32,5 @@ jobs:
     - run: npm run build --if-present
     - run: npm run generate-keys
     - run: npm start
-    # - run: npm test
+    - run: sleep 5
+    - run: kill $(lsof -t -i :3000)
