@@ -31,6 +31,4 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - run: npm run generate-keys
-    - run: npm start
-    - run: sleep 5
-    - run: kill $(lsof -t -i :3000)
+    - run: npm start & sleep 5 & kill $(lsof -t -i :3000)
