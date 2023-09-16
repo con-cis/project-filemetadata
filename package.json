@@ -25,7 +25,7 @@
     "express"
   ],
   "devDependencies": {
-    "@types/node": "^20.6.0",
+    "@types/node": "^20.6.2",
     "figlet": "^1.6.0"
   },
   "license": "MIT"

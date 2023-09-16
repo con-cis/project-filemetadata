@@ -1,5 +1,5 @@
 import "dotenv/config";
-import crypto from "crypto";
+import { randomBytes, createCipheriv } from "crypto";
 import { saveFile } from "./saveFile.js";
 import config from "../config/config.js";
 /**
@@ -13,10 +13,10 @@ export async function encryptData(data, hashedFilename) {
   const encryptionKey = process.env.ENCRYPTION_KEY;
 
   // Generate a random initialization vector (IV)
-  const iv = crypto.randomBytes(16);
+  const iv = randomBytes(16);
 
   // Create a Cipher object with createCipheriv()
-  const cipher = crypto.createCipheriv(
+  const cipher = createCipheriv(
     "aes-256-cbc",
     Buffer.from(encryptionKey),
     iv

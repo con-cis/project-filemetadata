@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import { createDecipheriv } from "crypto";
 import { readFileSync } from "fs";
 import "dotenv/config";
 /**
@@ -18,7 +18,7 @@ export function decryptData(hashedFilename) {
   const encryptedData = encryptedDataWithIV.subarray(16);
 
   // Create a Decipher object with createDecipheriv()
-  const decipher = crypto.createDecipheriv(
+  const decipher = createDecipheriv(
     "aes-256-cbc",
     Buffer.from(encryptionKey),
     iv

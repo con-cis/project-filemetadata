@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { readFileSync } from "fs";
 import { parse } from "yaml";
-import { fileURLToPath } from "url";
 import figlet from "figlet";
 import path from "path";
 
@@ -13,10 +12,9 @@ if (!(process.env.SALT_HFN && process.env.ENCRYPTION_KEY)) {
   process.exit(1);
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.resolve();
 
-const configFilePath = path.join(__dirname, "config.yaml");
+const configFilePath = path.join(__dirname, "src/config/config.yaml");
 
 const colors = {
   fgCyan: "\x1b[36m",

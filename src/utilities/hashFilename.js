@@ -1,5 +1,5 @@
 import "dotenv/config";
-import crypto from "crypto";
+import { createHash } from "crypto";
 /**
  * Hash a Filename with a Salt using SHA-256.
  *
@@ -10,10 +10,7 @@ export function hashFilenameWithSalt(filename) {
   const salt = process.env.SALT;
   console.log(crypto.randomBytes(16).toString("hex"));
   const combinedData = salt + filename;
-  const hashedData = crypto
-    .createHash("sha256")
-    .update(combinedData)
-    .digest("hex");
+  const hashedData = createHash("sha256").update(combinedData).digest("hex");
   return hashedData;
 }
 
