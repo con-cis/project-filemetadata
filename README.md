@@ -121,7 +121,7 @@ Contributions are welcome! If you'd like to contribute to the project, follow th
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [GNU GPLv3](LICENSE).
 
 ## Disclaimer
 
